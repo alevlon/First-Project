@@ -3,16 +3,19 @@ $(document).ready(function()
     var rotateX = 0;
     var rotateY = 0;
 
-    $(document).keydown(function(e) 
+    $('.container-wrap').mousemove(function(e) 
     {
-        if (e.keyCode == 37) rotateY -= 4;
-        if (e.keyCode == 38) rotateX += 4;  
-        if (e.keyCode == 39) rotateY += 4;
-        if (e.keyCode == 40) rotateX -= 4;
+        rotateX = (e.pageX - $(this).offset().left - $(this).width()/2)/3;
+        rotateY = (e.pageY - $(this).offset().top - $(this).height()/2)/3;
+
         
-        if (rotateY == -360 || rotateY == 360) rotateY = 0;
-        if (rotateX == -360 || rotateX == 360) rotateX = 0;
-        
-        $('.wrap').css("transform", "rotateX(" + -rotateX + "deg) rotateY(" + -rotateY + "deg)");
+        $('.wrap').css("transform", "rotateX(" + -rotateY + "deg) rotateY(" + rotateX + "deg)");
+    })
+    $('.container-wrap').mouseleave(function() 
+    {
+        rotateY = 0;
+        rotateX = 0;
+
+        $('.wrap').css("transform", "rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg)");
     })
 });
