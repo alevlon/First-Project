@@ -5,8 +5,8 @@ $(document).ready(function()
 
     $('.container-wrap').mousemove(function(e) 
     {
-        rotateX = (e.pageX - $(this).offset().left - $(this).width()/2)/3;
-        rotateY = (e.pageY - $(this).offset().top - $(this).height()/2)/3;
+        rotateX = (e.pageX - $(this).offset().left - $(this).width()/2)/2;
+        rotateY = (e.pageY - $(this).offset().top - $(this).height()/2)/2;
 
         
         $('.wrap').css("transform", "rotateX(" + -rotateY + "deg) rotateY(" + rotateX + "deg)");
